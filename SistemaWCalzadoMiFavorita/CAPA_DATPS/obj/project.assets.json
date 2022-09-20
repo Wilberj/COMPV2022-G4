@@ -470,25 +470,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Julio Aburto\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Jose J Castillo\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj",
+      "projectUniqueName": "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj",
       "projectName": "CAPA_DATOS",
-      "projectPath": "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj",
-      "packagesPath": "C:\\Users\\Julio Aburto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\obj\\",
+      "projectPath": "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj",
+      "packagesPath": "C:\\Users\\Jose J Castillo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Julio Aburto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jose J Castillo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -534,7 +537,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

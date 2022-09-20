@@ -8,4 +8,8 @@
     <ProjectReference Include="..\CAPA_DATPS\CAPA_DATOS.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SERVICIOS\" />
+  </ItemGroup>
+
 </Project>
