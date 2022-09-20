@@ -1,0 +1,360 @@
+﻿.FormContainer1,
+.FormContainer2 {
+    display: grid;
+    padding: 20px;
+    grid-template-columns: calc(50% - 20px) calc(50% - 20px);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+    border-radius: 0.4cm;
+    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
+}
+
+.FormContainer2 {
+    grid-template-columns: calc(33% - 10px) calc(33% - 10px) calc(33% - 10px);
+}
+
+.btn,
+.btn_primary {
+    height: 40px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-font-primary);
+    background-color: var(--color-cinco);
+    border: none;
+    box-sizing: border-box;
+    border-radius: 0.4cm;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn_primary {
+    height: 40px;
+    background-color: var(--color-primary);
+}
+
+.btn_secundary {
+    height: 30px;
+    width: auto;
+    border-radius: 15%;
+    border-color: transparent;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--color-secundario);
+    -webkit-border-radius: 15%;
+    -moz-border-radius: 15%;
+    -ms-border-radius: 15%;
+    -o-border-radius: 15%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.text,
+.text_primary,
+.text_secundary {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--color-font-main);
+    background-color: #bcb6b61e;
+    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 0.4cm;
+    border: none;
+    width: calc(100%);
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+/* 
+.tableclass1 {
+	width: 100%;
+	box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.2);
+	padding: 0px;
+	overflow-x: auto;
+	border-radius: 0.3cm;
+	border-collapse: collapse;
+	table-layout: auto;
+	overflow-x: scroll;
+	overflow-y: scroll;
+}
+.tableclass1 th {
+	color: var(--color-font-main);
+	border: none;
+	border-bottom: 1px solid #9ea7af;
+	font-size: 14px;
+	font-weight: lighter;
+	padding: 5px;
+	text-align: left;
+	vertical-align: middle;
+}
+.tableclass1 td {
+	padding: 5px;
+	margin: 0px;
+	text-align: left;
+}
+.tableclass1 tbody tr:nth-child(odd) {
+	background: #ebebeb;
+} */
+/* -------------------------------------------------------------------------------*/
+/* .tableclass1 {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.tableclass1 caption {
+	font-size: 1.5em;
+	margin: 0.5em 0 0.75em;
+}
+
+.tableclass1 tr {
+	background-color: #f8f8f8;
+	border: 1px solid #ddd;
+	padding: 0.35em;
+}
+
+.tableclass1 th,
+.tableclass1 td {
+	padding: 0.625em;
+	text-align: center;
+}
+
+.tableclass1 th {
+	font-size: 0.85em;
+	letter-spacing: 0.1em;
+	color: var(--color-font-main);
+	border: none;
+	font-size: 14px;
+	font-weight: lighter;
+	text-align: left;
+	vertical-align: middle;
+}
+
+@media screen and (max-width: 600px) {
+	.tableclass1 {
+		border: 0;
+	}
+
+	.tableclass1 caption {
+		font-size: 1.3em;
+	}
+
+	.tableclass1 thead {
+		border: none;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
+
+	.tableclass1 tr {
+		border-bottom: 3px solid #ddd;
+		display: block;
+		margin-bottom: 0.625em;
+	}
+
+	.tableclass1 td {
+		border-bottom: 1px solid #ddd;
+		display: block;
+		font-size: 0.8em;
+		text-align: right;
+	}
+
+	.tableclass1 td::before {
+	
+	 aria-label has no advantage, it won't be read inside a table
+	  content: attr(aria-label);
+	  
+		content: attr(data-label);
+		float: left;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.tableclass1 td:last-child {
+		border-bottom: 0;
+	}
+} */
+
+/* -------------------------------------------------*/
+
+.tableclass1 {
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+    .tableclass1 td,
+    .tableclass1 th {
+        text-align: center;
+        padding: 8px;
+    }
+
+    .tableclass1 td {
+        border-right: 1px solid #f8f8f8;
+        font-size: 12px;
+    }
+
+    .tableclass1 thead th {
+        color: #ffffff;
+        background: var(--color-seis);
+    }
+
+        .tableclass1 thead th:nth-child(odd) {
+            color: #ffffff;
+            background: var(--color-seis);
+        }
+
+    .tableclass1 tr:nth-child(even) {
+        background: #f8f8f8;
+    }
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .tableclass1 {
+        display: block;
+        width: 100%;
+    }
+
+    .table-wrapper:before {
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 13px;
+        color: white;
+        padding: 0 0 10px;
+    }
+
+    .tableclass1 thead,
+    .tableclass1 tbody,
+    .tableclass1 thead th {
+        display: block;
+    }
+
+        .tableclass1 thead th:last-child {
+            border-bottom: none;
+        }
+
+    .tableclass1 thead {
+        float: left;
+    }
+
+    .tableclass1 tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+        border-bottom: 1px solid #9ea7af;
+    }
+
+    .tableclass1 td,
+    .tableclass1 th {
+        padding: 20px 0.625em 0.625em 0.625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+
+    .tableclass1 thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+
+    .tableclass1 tbody tr {
+        display: table-cell;
+    }
+
+        .tableclass1 tbody tr:nth-child(odd) {
+            background: none;
+        }
+
+    .tableclass1 tr:nth-child(even) {
+        background: transparent;
+    }
+
+    .tableclass1 tr td:nth-child(odd) {
+        background: #f8f8f8;
+        border-right: 1px solid #e6e4e4;
+    }
+
+    .tableclass1 tr td:nth-child(even) {
+        border-right: 1px solid #e6e4e4;
+    }
+
+    .tableclass1 tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+
+.checkbox {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    display: block;
+    margin: 8px;
+}
+
+.TabMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+    .TabMenu label {
+        margin-left: 20px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--color-font-main);
+        border-bottom: #9ea7af 2px;
+        padding: 10px;
+        cursor: pointer;
+        transition: all 0.5s;
+    }
+
+        .TabMenu label:hover {
+            color: var(--color-primary);
+        }
+
+.date {
+    /* width: 50px;
+	display: block; */
+    appearance: none;
+    color: #1d1d1d;
+    font-size: 18px;
+    padding: 4px;
+    display: block;
+    width: calc(100%);
+    height: calc(70%);
+    background-color: #bcb6b61e;
+    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 0.4cm;
+    border: none;
+}

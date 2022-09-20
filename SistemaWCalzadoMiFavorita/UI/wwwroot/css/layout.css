@@ -1,0 +1,69 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    display: grid;
+    margin: 0px;
+    padding: 0px;
+    grid-template-rows: 50px calc(100vh - 50px);
+    grid-template-columns: 130px calc(100% - 130px);
+    font-family: 'Poppins', sans-serif;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.header,
+.nav1 {
+    background-color: var(--color-terciario);
+    color: var(--color-main);
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vh;
+    /* box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.5); */
+}
+
+.nav1 {
+    justify-content: flex-end;
+    padding-right: 20px;
+    width: 100%;
+}
+
+.AppAside {
+    display: block;
+    min-height: 100vh;
+    width: 130px;
+    float: right;
+    background-color: var(--color-cuatro);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.nav2 {
+    color: var(--color-font-cuatro);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+    .nav2 a {
+        text-decoration: none;
+        color: var(--color-font-terciario);
+        font-weight: bold;
+        padding: 5px;
+        cursor: pointer;
+        border-bottom: 2px solid var(--color-terciario);
+        transition: all 0.5s;
+    }
+
+        .nav2 a:hover {
+            border-bottom: 2px solid var(--color-font-terciario);
+        }
+
+.AppMain {
+    padding: 20px;
+    overflow: hidden;
+    overflow-y: auto;
+}

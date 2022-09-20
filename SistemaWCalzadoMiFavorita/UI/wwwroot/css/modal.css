@@ -1,0 +1,47 @@
+﻿w-modal {
+    opacity: 0;
+    transition: all 1s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 30px;
+    font-family: "Poppins", sans-serif;
+    overflow-y: scroll;
+}
+
+    w-modal .ModalContent {
+        background-color: var(--color-modal);
+        width: 80%;
+        max-width: 2000px;
+        border-radius: 0.4cm;
+        margin: auto;
+        margin-top: 50px;
+        /* box-shadow: 10px 7px 35px -6px rgba(0,0,0,0.75); */
+        animation-duration: 1s;
+        box-shadow: 0px 0px 66px 1px rgba(0, 133, 255, 0.71);
+        -webkit-box-shadow: 0px 0px 66px 1px rgba(0, 133, 255, 0.71);
+        -moz-box-shadow: 0px 0px 66px 1px rgba(0, 133, 255, 0.71);
+    }
+
+    w-modal .ModalHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 50px;
+        padding-left: 100px;
+        border-radius: 0.4cm;
+        padding-right: 100px;
+    }
+
+        w-modal .ModalHeader label {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+.ModalContentComponent {
+    padding: 15px;
+    height: 80%;
+    max-height: 1000px;
+}
