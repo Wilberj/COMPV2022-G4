@@ -322,13 +322,11 @@ namespace CAPA_NEGOCIO.MODEL
         {
             this.IdArticuloDanados = (Int32)this.Save();
 
-            this.UpdateAdminMerca();
-
-            // UpdateAdminMerca();
+            this.UpdateActualizarExistencias();
 
             return true;
         }
-        public Object UpdateAdminMerca()
+        public Object UpdateActualizarExistencias()
         {
             if (this.Existencias != null)
             {
