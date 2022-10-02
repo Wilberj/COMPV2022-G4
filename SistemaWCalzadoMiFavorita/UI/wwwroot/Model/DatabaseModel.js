@@ -20,7 +20,6 @@ class Bodega {
 	}
 	IdBodega = { type: "number", primary: true };
 	NombreBodega = { type: "text" };
-	IdArticulo = { type: "number" };
 }
 export { Bodega };
 class Categoria {
@@ -52,13 +51,14 @@ class CompraArticulo {
 		}
 	}
 	IdCompra = { type: "number", primary: true };
-	IdUsuario = { type: "number" };
+	IdUsuario = { type: "number", hidden: true };
 	IdProveedor = { type: "number" };
 	Fecha = { type: "date" };
-	IVA = { type: "number" };
+	IVA = { type: "number", hidden: true };
 	Descuento = { type: "number" };
-	SubTotal = { type: "number" };
-	TotalCosto = { type: "number" };
+	SubTotal = { type: "number", hidden: true };
+	TotalCosto = { type: "number", hidden: true };
+	Estado = { type: "checkbox" };
 }
 export { CompraArticulo };
 class DetalleCompra {
@@ -69,10 +69,11 @@ class DetalleCompra {
 	}
 	IdDetalleCompra = { type: "number", primary: true };
 	IdCompra = { type: "number", hidden: true };
-	IdArticulo = { type: "number", hidden: true };
-	Cantidad = { type: "number", hidden: true };
+	IdArticulo = { type: "number" };
+	Cantidad = { type: "number" };
 	PrecioCompra = { type: "number" };
-	TotalCostoDetalle = { type: "number", hidden: true };
+	TotalCostoDetalle = { type: "number" };
+	Estado = { type: "checkbox" };
 }
 export { DetalleCompra };
 class DetalleVenta {
@@ -88,20 +89,6 @@ class DetalleVenta {
 	CantidadVenta = { type: "number" };
 }
 export { DetalleVenta };
-class Devoluciones {
-	constructor(props) {
-		for (const prop in props) {
-			this[prop] = props[prop];
-		}
-	}
-	IdDevolucion = { type: "number", primary: true };
-	IdArticulo = { type: "number" };
-	IdDetalleVenta = { type: "number" };
-	IdDetalleCompra = { type: "number" };
-	FechaRegistro = { type: "date" };
-	Descripcion = { type: "text" };
-}
-export { Devoluciones };
 class Existencias {
 	constructor(props) {
 		for (const prop in props) {
@@ -111,12 +98,13 @@ class Existencias {
 	IdArticuloExistencia = { type: "number", primary: true };
 	IdCompra = { type: "number", hidden: true };
 	IdArticulo = { type: "number", hidden: true };
-	IdColor = { type: "number" };
-	IdTalla = { type: "number" };
-	IdMaterial = { type: "number" };
-	IdCategoria = { type: "number" };
-	IdModelo = { type: "number" };
-	IdMarca = { type: "number" };
+	IdColor = { type: "number", hidden: true };
+	IdMaterial = { type: "number", hidden: true };
+	IdCategoria = { type: "number", hidden: true };
+	IdModelo = { type: "number", hidden: true };
+	IdMarca = { type: "number", hidden: true };
+	Talla = { type: "number" };
+	IdBodega = { type: "number", hidden: true };
 	PrecioUnidadCompra = { type: "number" };
 	PrecioUnidadVenta = { type: "number" };
 	Stock = { type: "number" };
@@ -180,17 +168,7 @@ class Rol {
 	Descripción = { type: "text" };
 }
 export { Rol };
-class Talla {
-	constructor(props) {
-		for (const prop in props) {
-			this[prop] = props[prop];
-		}
-	}
-	IdTalla = { type: "number", primary: true };
-	NombreTalla = { type: "text" };
-	FechaRegistro = { type: "date" };
-}
-export { Talla };
+
 class Usuario {
 	constructor(props) {
 		for (const prop in props) {
@@ -225,3 +203,42 @@ class Venta {
 	SumaCambio = { type: "number" };
 }
 export { Venta };
+class DevolucionesCompra {
+	constructor(props) {
+		for (const prop in props) {
+			this[prop] = props[prop];
+		}
+	}
+	IdDevolucion = { type: "number", primary: true };
+	IdCompra = { type: "number", hidden: true };
+	Fecha = { type: "date" };
+}
+export { DevolucionesCompra };
+class DetalleDevolucionCompra {
+	constructor(props) {
+		for (const prop in props) {
+			this[prop] = props[prop];
+		}
+	}
+	IdDetalleDevolucionCompra = { type: "number", primary: true };
+	IdDevolucion = { type: "number", hidden: true };
+	Cantidad = { type: "number", hidden: true };
+	Descripcion = { type: "text" };
+}
+export { DetalleDevolucionCompra };
+class ArticuloDanados {
+	constructor(props) {
+		for (const prop in props) {
+			this[prop] = props[prop];
+		}
+	}
+	IdArticuloDanados = { type: "number", primary: true };
+	IdArticulo = { type: "number", hidden: true };
+	IdUsuario = { type: "number", hidden: true };
+	IdArticuloExistencia = { type: "number", hidden: true };
+	IdBodega = { type: "number", hidden: true };
+	Cantidad = { type: "number" };
+	Descripcion = { type: "text" };
+}
+
+export { ArticuloDanados };
