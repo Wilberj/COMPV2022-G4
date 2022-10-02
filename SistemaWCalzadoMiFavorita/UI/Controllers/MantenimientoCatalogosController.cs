@@ -167,20 +167,6 @@ namespace UI.Controllers
             return ent.Update("IdColor");
         }
 
-        public Object GetTalla(Talla ent)
-        {
-            return ent.Get<Talla>();
-        }
-        public Object SaveTalla(Talla ent)
-        {
-            ent.IdTalla = (Int32)ent.Save();
-            return ent;
-        }
-        public Object UpdateTalla(Talla ent)
-        {
-            return ent.Update("IdTalla");
-        }
-
         public Object GetCategoria(Categoria ent)
         {
             return ent.Get<Categoria>();
