@@ -1,7 +1,8 @@
 ﻿import { FormComponent } from "./CoreComponents/FormComponent.js";
 import { ModalComponent } from "./CoreComponents/ModalComponent.js";
 import { TableComponent } from "./CoreComponents/TableComponent.js";
-import { Categoria, Existencias, Marca, Material, Modelo, Talla, Articulo, Color } from "./Model/DatabaseModel.js";
+import { Categoria, Existencias, Marca, Material, Modelo, Articulo, Color } from "./Model/DatabaseModel.js";
+import { ViewDevolucionesDetalleCompra, ViewExistenciaCat } from "./Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "./Modules/utility.js";
 
 window.onload = async () => {
@@ -9,11 +10,12 @@ window.onload = async () => {
 
 	const dataA = await AjaxTools.PostResquest("api/MantenimientoCatalogos/GetArticulo");
 	const dataColor = await AjaxTools.PostResquest("api/MantenimientoCatalogos/GetColor");
-	const dataTalla = await AjaxTools.PostResquest("api/MantenimientoCatalogos/GetTalla");
 	const dataMaterial = await AjaxTools.PostResquest("api/MantenimientoCatalogos/GetMaterial");
 	const dataCategoria = await AjaxTools.PostResquest("api/MantenimientoCatalogos/GetCategoria");
 	const dataModelo = await AjaxTools.PostResquest("api/MantenimientoCatalogos/GetModelo");
 	const dataMarca = await AjaxTools.PostResquest("api/MantenimientoCatalogos/GetMarca");
+	const dataExist = await AjaxTools.PostResquest("api/MantenimientoCatalogos/ChargeExistencias");
+
 
 	AppMain.append(
 		Render.Create({ tagName: "h1", innerText: "EXISTENCIAS", class: "text_primary" })
@@ -38,10 +40,6 @@ window.onload = async () => {
 								type: "select",
 								Dataset: dataColor.map((d) => ({ id: d.IdColor, desc: d.NombreColor })),
 							},
-							IdTalla: {
-								type: "select",
-								Dataset: dataTalla.map((d) => ({ id: d.IdTalla, desc: d.NombreTalla })),
-							},
 							IdMaterial: {
 								type: "select",
 								Dataset: dataMaterial.map((d) => ({ id: d.IdMaterial, desc: d.NombreMaterial })),
@@ -60,7 +58,10 @@ window.onload = async () => {
 							},
 
 						});
+
 						ChargeCatalogo(Model);
+
+
 
 					},
 				},
@@ -70,17 +71,12 @@ window.onload = async () => {
 					class: "TabMenu",
 					// class: "TabMenu",
 					onclick: async () => {
-						const Model = new Material({});
-						ChargeCatalogo(Model);
-					},
-				},
-				{
-					tagName: "label",
-					innerText: "Talla",
-					class: "TabMenu",
-					// class: "TabMenu",
-					onclick: async () => {
-						const Model = new Talla({});
+						const Model = new Material({
+							IdModelo: {
+
+								Dataset: dataModelo.map((d) => ({ th: d.IdModelo, td: d.NombreModelo })),
+							},
+						});
 						ChargeCatalogo(Model);
 					},
 				},
