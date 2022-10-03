@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj": {}
+    "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj": {
+    "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj",
+        "projectUniqueName": "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj",
         "projectName": "CAPA_DATOS",
-        "projectPath": "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj",
-        "packagesPath": "C:\\Users\\Julio Aburto\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\obj\\",
+        "projectPath": "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj",
+        "packagesPath": "C:\\Users\\Jose J Castillo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Julio Aburto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jose J Castillo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -65,26 +67,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj": {
+    "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj",
+        "projectUniqueName": "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj",
         "projectName": "CAPA_NEGOCIO",
-        "projectPath": "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj",
-        "packagesPath": "C:\\Users\\Julio Aburto\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_NEGOCIO\\obj\\",
+        "projectPath": "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_NEGOCIO\\CAPA_NEGOCIO.csproj",
+        "packagesPath": "C:\\Users\\Jose J Castillo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_NEGOCIO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Julio Aburto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jose J Castillo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -97,8 +101,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj": {
-                "projectPath": "C:\\Users\\Julio Aburto\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj"
+              "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj": {
+                "projectPath": "C:\\Users\\Jose J Castillo\\Desktop\\SistemaWCalzadoMiFavorita\\SistemaWCalzadoMiFavorita\\CAPA_DATPS\\CAPA_DATOS.csproj"
               }
             }
           }
@@ -128,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

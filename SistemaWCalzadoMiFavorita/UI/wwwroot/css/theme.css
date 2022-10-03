@@ -3,18 +3,18 @@
 @import url(./modal.css);
 
 :root {
-    --main-font: sans-serif;
-    --main-font-two: 100% "DM Sans", sans-serif;
-    --color-main: #ebebeb;
-    --color-font-main: rgb(29, 29, 29);
-    --color-modal: #fbfbff;
-    --color-primary: #274C77;
-    --color-font-primary: #e7ecef;
-    --color-secundario: #9d0208;
-    --color-terciario: #0268c8;
-    --color-font-terciario: #fff;
-    --color-cuatro: #004e98;
-    --color-seis: #3A6EA5;
-    --color-cinco: #008000;
-    --color-font-cuatro: #fff;
+	--main-font: sans-serif;
+	--main-font-two: 100% "DM Sans", sans-serif;
+	--color-main: #ebebeb;
+	--color-font-main: rgb(29, 29, 29);
+	--color-modal: #fbfbff;
+	--color-primary: #274C77;
+	--color-font-primary: #e7ecef;
+	--color-secundario: #9d0208;
+	--color-terciario: #0268c8;
+	--color-font-terciario: #fff;
+	--color-cuatro: #004e98;
+	--color-seis: #3A6EA5;
+	--color-cinco: #008000;
+	--color-font-cuatro: #fff;
 }

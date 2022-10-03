@@ -5,11 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CAPA_NEGOCIO\CAPA_NEGOCIO.csproj" />
+    <Compile Remove="wwwroot\Modules\CompraModulo\Devoluciones\**" />
+    <Content Remove="wwwroot\Modules\CompraModulo\Devoluciones\**" />
+    <EmbeddedResource Remove="wwwroot\Modules\CompraModulo\Devoluciones\**" />
+    <None Remove="wwwroot\Modules\CompraModulo\Devoluciones\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Modules\CompraModulo\Devoluciones\" />
+    <ProjectReference Include="..\CAPA_NEGOCIO\CAPA_NEGOCIO.csproj" />
   </ItemGroup>
 
 </Project>
