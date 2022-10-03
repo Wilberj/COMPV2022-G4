@@ -92,6 +92,10 @@ namespace UI.Controllers
             ent.IdMaterial = (Int32)ent.Save();
             return ent;
         }
+        //public Object DeleteMaterial(Material ent)
+        //{
+        //    return ent.Delete();
+        //}
         public Object UpdateMaterial(Material ent)
         {
             return ent.Update("IdMaterial");
@@ -209,5 +213,23 @@ namespace UI.Controllers
             return ent.Update("IdMarca");
         }
 
+        public Object GetBodega(Bodega ent)
+        {
+            return ent.Get<Bodega>();
+        }
+        public Object SaveBodega(Bodega ent)
+        {
+            ent.IdBodega = (Int32)ent.Save();
+            return ent;
+        }
+        public Object UpdateBodega(Bodega ent)
+        {
+            return ent.Update("IdBodega");
+        }
+        public Object ChargeExistencias(ViewExistenciaCat ent)
+        {
+
+            return ent.Get<ViewExistenciaCat>();
+        }
     }
 }

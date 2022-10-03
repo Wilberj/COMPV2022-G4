@@ -23,10 +23,13 @@ namespace UI.Controllers
             ent.IdUsuario = AuthNetCore.User.UserId;
             return ent.Get<ViewModuloCompra>();
         }
+
         public Object SaveCompra(CompraArticulo ent)
         {
             return ent.SaveCompra();
         }
+
+
         //public Object SaveArticulos(DetalleCompra ent)
         //{
         //    return ent.SaveArticulos();
@@ -51,6 +54,11 @@ namespace UI.Controllers
         public Object ChargeExistencias()
         {
             return new Existencias().Get<Existencias>();
+        }
+
+        public Object ChargeCompras()
+        {
+            return new CompraArticulo().Get<CompraArticulo>();
         }
         public Object SaveDetalleCompra(DetalleCompra ent)
         {
