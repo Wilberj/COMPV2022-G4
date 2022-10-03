@@ -1,0 +1,40 @@
+﻿import { TableComponent } from "../../CoreComponents/TableComponent.js";
+import { ArticuloDanados } from "../../Model/DatabaseModel.js";
+import { ViewArticuloDanados, View_Danados } from "../../Model/ViewDatabaseModel.js";
+import { AjaxTools, Render } from "../utility.js";
+
+window.onload = async () => {
+	AppMain.append(
+		Render.Create({ tagName: "h1", innerText: "ARTICULOS DAÑADOS", class: "text_primary" })
+	);
+	AppMain.append(
+		Render.Create({
+			class: "FormContainer2",
+			children: [
+				{
+					tagName: "input",
+					type: "button",
+					className: "btn",
+					value: "Registrar Nueva Articulo Dañado",
+					onclick: async () => {
+						//Carga vista de nuevo
+						window.location = "./ViewCrearArticuloDanados"
+					},
+				},
+			],
+		})
+	);
+	const MisArticuloDanado = await AjaxTools.PostResquest("../api/ArticuloDanados/ArticuloDanados");
+	AppMain.append(
+		new TableComponent({
+			Dataset: MisArticuloDanado,
+			ModelObject: new View_Danados(),
+			Function: {
+				name: "Detalles",
+				action: async (Detalle) => {
+					//carga detalle de la compra
+				},
+			},
+		})
+	);
+};

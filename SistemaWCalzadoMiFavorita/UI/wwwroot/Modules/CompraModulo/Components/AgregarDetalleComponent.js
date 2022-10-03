@@ -16,12 +16,9 @@ class AgregarDetalleComponent extends HTMLElement {
 		this.DetalleCompra.Existencias = this.Dataset;
 		this.DTemporal.Existencias = this.Dataset;
 		this.Draw();
-		this.dataM = {};
-		this.dataColor = {};
-		this.dataMaterial = {};
-		this.dataCategoria = {};
-		this.dataModelo = {};
-		this.dataTalla = {};
+
+		this.dataBodega = {};
+		this.dataArticulo = {};
 		// const Articulos = [];
 		// this.ArticulosCompras = {
 		// 	Articulos: Articulos,
@@ -31,44 +28,21 @@ class AgregarDetalleComponent extends HTMLElement {
 	Draw = async () => {
 		//const Arti = await AjaxTools.PostResquest("../../api/MantenimientoCatalogos/GetArticulo");
 		const dataU = await AjaxTools.PostResquest("../../api/CompraModulo/ChargeDetalleCompra");
-		this.dataM = await AjaxTools.PostResquest("../../api/MantenimientoCatalogos/GetMarca");
-		this.dataColor = await AjaxTools.PostResquest("../../api/MantenimientoCatalogos/GetColor");
-		this.dataTalla = await AjaxTools.PostResquest("../../api/MantenimientoCatalogos/GetTalla");
-		this.dataMaterial = await AjaxTools.PostResquest(
-			"../../api/MantenimientoCatalogos/GetMaterial"
+
+		this.dataArticulo = await AjaxTools.PostResquest(
+			"../../api/MantenimientoCatalogos/GetArticulo"
 		);
-		this.dataCategoria = await AjaxTools.PostResquest(
-			"../../api/MantenimientoCatalogos/GetCategoria"
-		);
-		this.dataModelo = await AjaxTools.PostResquest("../../api/MantenimientoCatalogos/GetModelo");
 		this.Form = new FormComponent({
-			Model: new DetalleCompra(),
-			// 	{
-			// 	IdMarca: {
-			// 		type: "select",
-			// 		Dataset: this.dataM.map((d) => ({ id: d.IdMarca, desc: d.NombreMarca })),
-			// 	},
-			// 	IdColor: {
-			// 		type: "select",
-			// 		Dataset: this.dataColor.map((d) => ({ id: d.IdColor, desc: d.NombreColor })),
-			// 	},
-			// 	IdTalla: {
-			// 		type: "select",
-			// 		Dataset: this.dataTalla.map((d) => ({ id: d.IdTalla, desc: d.NombreTalla })),
-			// 	},
-			// 	IdMaterial: {
-			// 		type: "select",
-			// 		Dataset: this.dataMaterial.map((d) => ({ id: d.IdMaterial, desc: d.NombreMaterial })),
-			// 	},
-			// 	IdCategoria: {
-			// 		type: "select",
-			// 		Dataset: this.dataCategoria.map((d) => ({ id: d.IdCategoria, desc: d.NombreCategoria })),
-			// 	},
-			// 	IdModelo: {
-			// 		type: "select",
-			// 		Dataset: this.dataModelo.map((d) => ({ id: d.IdModelo, desc: d.NombreModelo })),
-			// 	},
-			// }
+			Model: new DetalleCompra({
+				IdDetalleCompra: { type: "number", primary: true },
+				IdCompra: { type: "number", hidden: true },
+				IdArticulo: { type: "number", hidden: true },
+				Cantidad: { type: "number", hidden: true },
+				PrecioCompra: { type: "number", hidden: true },
+				TotalCostoDetalle: { type: "number", hidden: true },
+				Estado: { type: "checkbox", hidden: true },
+
+			}),
 			EditObject: this.DetalleCompra,
 		});
 		this.Table = new TableComponent({
@@ -111,6 +85,10 @@ class AgregarDetalleComponent extends HTMLElement {
 
 									this.DetalleCompra.IdArticulo = JSON.parse(JSON.stringify(existencia.IdArticulo));
 									this.DetalleCompra.Cantidad = JSON.parse(JSON.stringify(existencia.Stock));
+									this.DetalleCompra.PrecioCompra = JSON.parse(
+										JSON.stringify(existencia.PrecioUnidadCompra)
+									);
+									this.DetalleCompra.Estado = JSON.parse(JSON.stringify(existencia.Estado));
 									this.Dataset.push(existencia),
 										//console.log(this.DetalleCompra.IdArticulo = JSON.parse(JSON.stringify(articulo.IdArticulo)));
 										Modal.Close();
@@ -137,14 +115,19 @@ class AgregarDetalleComponent extends HTMLElement {
 						className: "btn",
 						value: "Agregar Informacion al Detalle",
 						onclick: async () => {
+							/*COSTO TOTAL DEL DETALLE*/
 							this.DetalleCompra.TotalCostoDetalle =
 								this.DetalleCompra.Cantidad * this.DetalleCompra.PrecioCompra;
 
-							// var total;  
+							// this.Dataset.IdArticulo = this.Dataset.NArticulo;
+							// this.Dataset.NArticulo = this.dataArticulo.find(
+							// 	(x) => x.IdArticulo == this.Dataset.IdArticulo
+							// ).NombreArticulo;
+							// var total;
 							// 	total += this.DetalleCompra.TotalCostoDetalle;
 							// 	console.log(total);
 							// this.Dataset.Stock =+ this.Dataset.Stock;
-							// this.DetalleCompra.NombreArticulo = this.DTemporal[0].NombreArticulo;
+							// dd
 							this.action(this.DetalleCompra, this.Dataset, console.log(this.DetalleCompra));
 							//console.log(this.DetalleCompra.IdArticulo = JSON.parse(JSON.stringify(articulo.IdArticulo)));
 						},

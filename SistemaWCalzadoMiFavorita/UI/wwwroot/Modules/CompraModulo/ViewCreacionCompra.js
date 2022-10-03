@@ -15,6 +15,8 @@ window.onload = async () => {
 	const Proveedores = [];
 	const Articulos = [];
 	const DetalleCompras = [];
+	const Total = [];
+	var suma = 0;
 	const NuevaCompra = {
 		DetalleCompras: DetalleCompras,
 
@@ -38,17 +40,59 @@ window.onload = async () => {
 					value: "Guardar Compra",
 					onclick: async () => {
 						//validadcion
-
 						const response = await AjaxTools.PostResquest(
 							"../api/CompraModulo/SaveCompra",
-							NuevaCompra
+							NuevaCompra,
+
+							Total.forEach(function (tot) {
+								suma += tot;
+							}),
+							console.log(suma),
+							(NuevaCompra.SubTotal = suma),
+							//suma = JSON.parse(JSON.stringify(NuevaCompra.SubTotal)),
+
+							//for (let i = 0; i < Total.length; i++) {
+							//	suma += Total[i];
+							//}
+
+							(NuevaCompra.IVA = NuevaCompra.SubTotal * 0.16),
+							(NuevaCompra.TotalCosto =
+								parseInt(NuevaCompra.SubTotal) +
+								parseInt(NuevaCompra.IVA) -
+								parseInt(NuevaCompra.Descuento))
 						);
 						if (response == true) {
 							AppMain.append(
 								new ModalComponent(
 									Render.Create({
 										tagName: "h1",
-										innerText: "Compra Guardada",
+
+										// innerText: `Compra Guardada \n <p>Total</p> Subtotal: C$${NuevaCompra.SubTotal}  \n IVA: C$${NuevaCompra.IVA}  \n Descuento: C$${NuevaCompra.Descuento} \n Total: C$${NuevaCompra.TotalCosto}`,
+
+										innerHTML: `
+									</table>
+										<table border="1">
+										<!--tr define table row-->
+										<tr>
+											<th>Fecha: ${NuevaCompra.Fecha}</th>
+										</tr>
+										<tr>
+											<!--tr define table head-->
+											<th>SubTotal</th>
+											<th>IVA</th>
+											<th>Descuento</th>
+											<th>Total</th>
+										</tr>
+										<tr>
+											<!--td define table data-->
+											<td>C$${NuevaCompra.SubTotal}</td>
+											<td>C$${NuevaCompra.IVA}</td>
+											<td>C$${NuevaCompra.Descuento}</td>
+											<td>C$${NuevaCompra.TotalCosto}</td>
+										</tr>
+										
+									</table>`
+
 									})
 								)
 							);
@@ -120,9 +164,10 @@ window.onload = async () => {
 						// 	DetalleCompras.Stock =+ DetalleCompras.Stock;
 						// }
 						DetalleCompras.push(detalle);
+						Total.push(detalle.TotalCostoDetalle);
 						// var total = innerText.CompraArticulo.TotalCosto;
-						console.log(detalle);
-						console.log(DetalleCompras);
+						console.log(Total);
+						//console.log(DetalleCompras);
 						Modal.Close();
 						TableDetalle.DrawTableComponent();
 					})
