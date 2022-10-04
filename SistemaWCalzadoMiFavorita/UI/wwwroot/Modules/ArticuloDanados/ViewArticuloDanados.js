@@ -18,7 +18,7 @@ window.onload = async () => {
 					value: "Registrar Nueva Articulo Dañado",
 					onclick: async () => {
 						//Carga vista de nuevo
-						location.reload(),
+						window.location = "./ViewCrearArticuloDanados"
 					},
 				},
 			],
