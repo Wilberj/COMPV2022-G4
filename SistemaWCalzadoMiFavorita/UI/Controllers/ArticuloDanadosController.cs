@@ -18,10 +18,10 @@ namespace UI.Controllers
             AuthNetCore.loginIN("sa", "123");
         }
         [HttpPost]
-        public Object ArticuloDanados(View_Danados ent)
+        public Object ArticuloDanados(ViewNArticulo ent)
         {
 
-            return ent.Get<View_Danados>();
+            return ent.Get<ViewNArticulo>();
         }
         public Object ChargeArticuloDanados(ViewArticuloDanados ent)
         {

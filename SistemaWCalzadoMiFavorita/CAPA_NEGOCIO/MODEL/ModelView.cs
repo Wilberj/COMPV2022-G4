@@ -108,6 +108,15 @@ namespace CAPA_NEGOCIO.MODEL
         public string NombreCategoria { get; set; }
     }
 
-
+    public class ViewNArticulo : EntityClass
+    {
+        public string NombreArticulo { get; set; }
+        public string NombreBodega { get; set; }
+        public int? Cantidad { get; set; }
+        public string Descripcion { get; set; }
+        public string NombreUsuario { get; set; }
+        public string DescripcionArticulo { get; set; }
+        public DateTime? FechaRegistro { get; set; }
+    }
 
 }

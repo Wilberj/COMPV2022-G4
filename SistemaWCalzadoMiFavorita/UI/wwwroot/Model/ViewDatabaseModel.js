@@ -152,3 +152,18 @@ class ViewExistenciaCat {
 	NombreCategoria = { type: "text" };
 }
 export { ViewExistenciaCat };
+class ViewNArticulo {
+	constructor(props) {
+		for (const prop in props) {
+			this[prop] = props[prop];
+		}
+	}
+	NombreArticulo = { type: "text", primary: true };
+	NombreBodega = { type: "text" };
+	Cantidad = { type: "number" };
+	Descripcion = { type: "text" };
+	NombreUsuario = { type: "text" };
+	DescripcionArticulo = { type: "text" };
+	FechaRegistro = { type: "date" };
+}
+export { ViewNArticulo };

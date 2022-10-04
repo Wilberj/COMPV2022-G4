@@ -4,18 +4,18 @@ import { ViewArticuloDanados } from "../../../Model/ViewDatabaseModel.js";
 import { AjaxTools } from "../../utility.js";
 
 class AgregarArticuloDanadoComponent extends HTMLElement {
-	constructor(action = () => { }) {
+	constructor(action = () => {}) {
 		super();
 		this.Dataset = [];
 		this.action = action;
 		this.Draw();
 	}
-	connectedCallback() { }
+	connectedCallback() {}
 	Draw = async () => {
 		this.Dataset = await AjaxTools.PostResquest("../api/ArticuloDanados/ChargeArticuloDanados");
 
 		this.Table = new TableComponent({
-
+			ModelObject: ViewArticuloDanados,
 			Dataset: this.Dataset,
 			Funtions: [
 				{

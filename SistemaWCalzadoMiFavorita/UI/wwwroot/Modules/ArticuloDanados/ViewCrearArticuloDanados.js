@@ -82,9 +82,7 @@ window.onload = async () => {
 		Render.Create({ tagName: "h2", innerText: "DETALLE DE COMPRA", class: "text_primary" })
 	);
 	const TableArticuloDanado = new TableComponent({
-		ModelObject: new ArticuloDanados({
-
-		}),
+		ModelObject: new ArticuloDanados({}),
 		Dataset: Existencias,
 		Funtions: [
 			{
@@ -117,7 +115,7 @@ window.onload = async () => {
 						NuevoArticulo.IdArticulo = Existencias[0].IdArticulo;
 						NuevoArticulo.IdArticuloExistencia = Existencias[0].IdArticuloExistencia;
 						Existencias[0].IdUsuario = NuevoArticulo.IdUsuario;
-
+						Existencias[0].IdBodega = NuevoArticulo.IdBodega;
 						NuevoArticulo.Descripcion = Existencias[0].Descripcion;
 						NuevoArticulo.Cantidad = Existencias[0].Cantidad;
 						console.log(NuevoArticulo);

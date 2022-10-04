@@ -1,6 +1,6 @@
 ﻿import { TableComponent } from "../../CoreComponents/TableComponent.js";
 import { ArticuloDanados } from "../../Model/DatabaseModel.js";
-import { ViewArticuloDanados, View_Danados } from "../../Model/ViewDatabaseModel.js";
+import { ViewArticuloDanados, ViewNArticulo, View_Danados } from "../../Model/ViewDatabaseModel.js";
 import { AjaxTools, Render } from "../utility.js";
 
 window.onload = async () => {
@@ -18,7 +18,7 @@ window.onload = async () => {
 					value: "Registrar Nueva Articulo Dañado",
 					onclick: async () => {
 						//Carga vista de nuevo
-						window.location = "./ViewCrearArticuloDanados"
+						location.reload(),
 					},
 				},
 			],
@@ -28,7 +28,7 @@ window.onload = async () => {
 	AppMain.append(
 		new TableComponent({
 			Dataset: MisArticuloDanado,
-			ModelObject: new View_Danados(),
+			ModelObject: new ViewNArticulo(),
 			Function: {
 				name: "Detalles",
 				action: async (Detalle) => {
