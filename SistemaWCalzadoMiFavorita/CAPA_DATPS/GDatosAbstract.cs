@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Data.SqlClient;
 
 namespace CAPA_DATOS
 {
@@ -78,9 +79,19 @@ namespace CAPA_DATOS
         }
         public Object Delete(Object Inst)
         {
+            try
+            {
+                SQLMCon.Open();
+                string strQuery = BuildDeleteQuery(Inst);
+                return ExecuteSqlQuery(strQuery);
+            }
+            catch (Exception)
+            {
+                SQLMCon.Close();
+                throw;
+            }
 
-            string strQuery = BuildDeleteQuery(Inst);
-            return ExecuteSqlQuery(strQuery);
+
         }
         public DataTable TraerDatosSQL(string queryString)
         {
@@ -88,11 +99,69 @@ namespace CAPA_DATOS
             CrearDataAdapterSql(queryString, SQLMCon).Fill(ObjDS);
             return ObjDS.Tables[0].Copy();
         }
+
         public DataTable TraerDatosSQL(IDbCommand Command)
         {
             DataSet ObjDS = new DataSet();
             CrearDataAdapterSql(Command).Fill(ObjDS);
             return ObjDS.Tables[0].Copy();
+        }
+
+        //public Object TakeListWithProcedure(string ProcedureName, Object Inst, List<Object> Params)
+        //{
+        //    try
+        //    {
+        //        SQLMCon.Open();
+        //        var Command = ComandoSql(ProcedureName, SQLMCon);
+        //        Command.CommandType = CommandType.StoredProcedure;
+        //        SqlCommandBuilder.DeriveParameters((SqlCommand)Command);
+        //        SQLMCon.Close();
+        //        if (Params.Count != 0)
+        //        {
+        //            int i = 0;
+        //            foreach (var param in Params)
+        //            {
+        //                var p = (SqlParameter)Command.Parameters[i + 1];
+        //                p.Value = param;
+        //                i++;
+        //            }
+        //        }
+        //        DataTable Table = TraerDatosSQL(Command);
+        //        List<Object> ListD = ConvertDataTable(Table, Inst);
+        //        return ListD;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
+        public List<T> TakeListWithProcedure<T>(string ProcedureName, Object Inst, List<Object> Params)
+        {
+            try
+            {
+                SQLMCon.Open();
+                var Command = ComandoSql(ProcedureName, SQLMCon);
+                Command.CommandType = CommandType.StoredProcedure;
+                SqlCommandBuilder.DeriveParameters((SqlCommand)Command);
+                SQLMCon.Close();
+                if (Params.Count != 0)
+                {
+                    int i = 0;
+                    foreach (var param in Params)
+                    {
+                        var p = (SqlParameter)Command.Parameters[i + 1];
+                        p.Value = param;
+                        i++;
+                    }
+                }
+                DataTable Table = TraerDatosSQL(Command);
+                List<T> ListD = ConvertDataTable<T>(Table, Inst);
+                return ListD;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         public List<T> TakeList<T>(Object Inst, string CondSQL = "")
         {
@@ -121,6 +190,32 @@ namespace CAPA_DATOS
                 SQLMCon.Close();
                 throw;
             }
+        }
+        private static List<Object> ConvertDataTable(DataTable dt, Object Inst)
+        {
+            List<Object> data = new List<Object>();
+            foreach (DataRow row in dt.Rows)
+            {
+                var item = GetItem(row, Inst);
+                data.Add(item);
+            }
+            return data;
+        }
+        private static Object GetItem(DataRow dr, Object Inst)
+        {
+            Type temp = Inst.GetType();
+            var obj = Activator.CreateInstance(Inst.GetType());
+            foreach (DataColumn column in dr.Table.Columns)
+            {
+                foreach (PropertyInfo pro in temp.GetProperties())
+                {
+                    if (pro.Name == column.ColumnName)
+                        pro.SetValue(obj, dr[column.ColumnName], null);
+                    else
+                        continue;
+                }
+            }
+            return obj;
         }
         protected List<T> ConvertDataTable<T>(DataTable dt, Object Inst)
         {
@@ -171,6 +266,7 @@ namespace CAPA_DATOS
                 return Convert.ChangeType(obj, type);
             }
         }
+
 
     }
 }

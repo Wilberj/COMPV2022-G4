@@ -243,10 +243,14 @@ namespace CAPA_DATOS
                 case "smallint":
                     Values = Values + AtributeName + "= " + AtributeValue.ToString() + ",";
                     break;
+                case "bit":
+                    Values = Values + AtributeName + "= '" + (AtributeValue.ToString() == "True" ? "1" : "0") + "',";
+                    break;
                 case "datetime":
                 case "date":
                     Values = Values + AtributeName + "= '" + ((DateTime)AtributeValue).ToString("yyyy/MM/dd HH:mm:ss") + "',";
                     break;
+
             }
             return Values;
 
