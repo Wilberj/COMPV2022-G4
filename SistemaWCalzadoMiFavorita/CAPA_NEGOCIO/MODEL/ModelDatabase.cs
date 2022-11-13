@@ -3,6 +3,7 @@ using CAPA_NEGOCIO.SECURITY;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,6 +54,7 @@ namespace CAPA_NEGOCIO.MODEL
         public List<Existencias> Existencias { get; set; }
         public List<Usuario> Usuario { get; set; }
 
+
         public Object SaveCompra()
         {
             this.IdCompra = (Int32)this.Save();
@@ -78,6 +80,8 @@ namespace CAPA_NEGOCIO.MODEL
 
 
             }
+
+
 
             //----------------------------------------------
             //Faltaria hacer una tabla intermedia entre usuario y comnpra
@@ -166,7 +170,23 @@ namespace CAPA_NEGOCIO.MODEL
         public int? IdVenta { get; set; }
         public int? IdArticuloExistencia { get; set; }
         public Decimal? PrecioVenta { get; set; }
+        public Decimal? DescuentoDetalleVenta { get; set; }
+        public Decimal? TotalCostoVenta { get; set; }
         public int? CantidadVenta { get; set; }
+        public bool? Estado { get; set; }
+        public List<Existencias> Existencias { get; set; }
+        public Object SaveExistencias()
+        {
+            if (this.Existencias != null)
+            {
+                foreach (var existe in this.Existencias)
+                {
+                    existe.IdArticuloExistencia = this.IdArticuloExistencia;
+                    existe.Update("IdArticuloExistencia");
+                }
+            }
+            return true;
+        }
     }
     public class Existencias : EntityClass
     {
@@ -184,7 +204,6 @@ namespace CAPA_NEGOCIO.MODEL
         public int? PrecioUnidadCompra { get; set; }
         public int? Stock { get; set; }
         public bool? Estado { get; set; }
-
 
     }
 
@@ -240,14 +259,33 @@ namespace CAPA_NEGOCIO.MODEL
     {
         public int? IdVenta { get; set; }
         public int? IdUsuario { get; set; }
-        public int? IdArticulo { get; set; }
         public DateTime? FechaFactura { get; set; }
         public string NombreCliente { get; set; }
         public Decimal? TotalVenta { get; set; }
         public Decimal? IVA { get; set; }
-        public Decimal? Cantidad { get; set; }
+        public Decimal? DescuentoVenta { get; set; }
+        public Decimal? SubTotal { get; set; }
         public Decimal? SumaRecibida { get; set; }
         public Decimal? SumaCambio { get; set; }
+        public bool? Estado { get; set; }
+        public List<DetalleVenta> DetalleVenta { get; set; }
+        public List<Existencias> Existencias { get; set; }
+
+        public Object SaveVenta()
+        {
+            this.IdVenta = (Int32)this.Save();
+
+            if (this.DetalleVenta != null)
+            {
+                foreach (var detalleventa in this.DetalleVenta)
+                {
+                    detalleventa.IdVenta = this.IdVenta;
+                    detalleventa.IdDetalleVenta = (Int32)detalleventa.Save();
+                    detalleventa.SaveExistencias();
+                }
+            }
+            return true;
+        }
     }
     public class DevolucionesCompra : EntityClass
     {
@@ -256,6 +294,8 @@ namespace CAPA_NEGOCIO.MODEL
         public DateTime? Fecha { get; set; }
         public List<CompraArticulo> Compras { get; set; }
         public List<DetalleDevolucionCompra> DetalleDevoluciones { get; set; }
+        public List<DetalleCompra> DetallesCompra { get; set; }
+        public List<Existencias> Existencias { get; set; }
 
         public Object SaveDevoluciones()
         {
@@ -263,22 +303,29 @@ namespace CAPA_NEGOCIO.MODEL
             if (this.DetalleDevoluciones != null)
             {
                 foreach (var detalledevolucion in this.DetalleDevoluciones)
-
                 {
                     detalledevolucion.IdDevolucion = this.IdDevolucion;
                     detalledevolucion.IdDetalleDevolucionCompra = (Int32)detalledevolucion.Save();
-                    detalledevolucion.SaveDetallesDevolucion();
+                    //detalledevolucion.SaveDetallesDevolucion();
+                }
+            }
+            foreach (var compra in this.Compras)
+            {
+                compra.IdCompra = this.IdCompra;
+                compra.Update("IdCompra");
+                foreach (var existencia in this.Existencias)
+                {
+                    existencia.IdCompra = compra.IdCompra;
+                    existencia.Delete();
+                }
+                foreach (var detalle in this.DetallesCompra)
+                {
+                    detalle.IdCompra = compra.IdCompra;
+                    detalle.Update("IdCompra");
                 }
 
             }
-            //if (this.Compras != null)
-            //{
-            //    foreach (var compra in this.Compras)
-            //    {
-            //        this.IdCompra = compra.IdCompra;
-            //        this.IdCompra = (Int32)compra.Save();
-            //    }
-            //}
+
             return true;
         }
     }
@@ -287,23 +334,20 @@ namespace CAPA_NEGOCIO.MODEL
     {
         public int? IdDetalleDevolucionCompra { get; set; }
         public int? IdDevolucion { get; set; }
-        public int? Cantidad { get; set; }
         public string Descripcion { get; set; }
         public List<DetalleCompra> DetallesCompra { get; set; }
         public List<CompraArticulo> Compras { get; set; }
 
         public Object SaveDetallesDevolucion()
         {
-            if (this.DetallesCompra != null)
+            if (this.Compras != null)
             {
                 foreach (var detalle in this.DetallesCompra)
                 {
-                    //detalle.Estado = (bool)detalle.Estado ? false : true;
-                    //detalle.Estado = !detalle.Estado;
-                    //detalle.IdDetalleCompra = this.IdDetalleCompra;
+                    detalle.IdDetalleCompra = detalle.IdDetalleCompra;
                     detalle.Update("IdDetalleCompra");
-
                 }
+
             }
             return true;
         }
@@ -311,22 +355,35 @@ namespace CAPA_NEGOCIO.MODEL
     public class ArticuloDanados : EntityClass
     {
         public int? IdArticuloDanados { get; set; }
-        public int? IdArticulo { get; set; }
-        public int? IdUsuario { get; set; }
-        public int? IdArticuloExistencia { get; set; }
         public int? IdBodega { get; set; }
-        public int? Cantidad { get; set; }
+        public int? IdUsuario { get; set; }
         public string Descripcion { get; set; }
-        public List<Existencias> Existencias { get; set; }
+        public List<DetalleArticuloDanados> DetalleArticDanados { get; set; }
         public Object SaveArticuloDanado()
         {
             this.IdArticuloDanados = (Int32)this.Save();
-
-            this.UpdateActualizarExistencia();
+            if (this.DetalleArticDanados != null)
+            {
+                foreach (var detalledanados in this.DetalleArticDanados)
+                {
+                    detalledanados.IdArticuloDanados = this.IdArticuloDanados;
+                    detalledanados.IdDetalleArticuloDanados = (Int32)detalledanados.Save();
+                    detalledanados.UpdateDanados();
+                }
+            }
 
             return true;
         }
-        public Object UpdateActualizarExistencia()
+    }
+
+    public class DetalleArticuloDanados : EntityClass
+    {
+        public int? IdDetalleArticuloDanados { get; set; }
+        public int? IdArticuloDanados { get; set; }
+        public int? IdArticuloExistencia { get; set; }
+        public int? Cantidad { get; set; }
+        public List<Existencias> Existencias { get; set; }
+        public Object UpdateDanados()
         {
             if (this.Existencias != null)
             {
@@ -340,5 +397,93 @@ namespace CAPA_NEGOCIO.MODEL
         }
     }
 
+    public class DevolucionVenta : EntityClass
+    {
+        public int? IdDevolucionVenta { get; set; }
+        public int? IdArticuloExistencia { get; set; }
+        public int? IdVenta { get; set; }
+        public int? IdUsuario { get; set; }
+        public DateTime? Fecha { get; set; }
+        public string Descripcion { get; set; }
+        public Decimal? TotalVenta { get; set; }
+        public int? Cantidad { get; set; }
+        public List<Venta> Ventas { get; set; }
+        public List<DetalleVenta> DetalleVenta { get; set; }
+        //public List<DetalleDevolucionVenta> DetalleDevolucionVenta { get; set; }
+        public List<Existencias> Existencias { get; set; }
+
+        public Object SaveDevoluciones()
+        {
+            this.IdDevolucionVenta = (Int32)this.Save();
+            if (this.Ventas != null)
+            {
+                foreach (var venta in this.Ventas)
+                {
+                    venta.IdVenta = this.IdVenta;
+                    venta.Update("IdVenta");
+
+                }
+                foreach (var detalle in this.DetalleVenta)
+                {
+                    detalle.IdVenta = this.IdVenta;
+                    detalle.Update("IdDetalleVenta");
+                }
+                foreach (var exist in this.Existencias)
+                {
+                    exist.IdArticuloExistencia = this.IdArticuloExistencia;
+                    exist.Estado = true;
+                    exist.Update("IdArticuloExistencia");
+                }
+            }
+            return true;
+        }
+        public Object SaveNewVenta()
+        {
+            if (this.Ventas != null)
+            {
+                foreach (var venta in this.Ventas)
+                {
+                    //venta.Update("IdVenta");
+                    venta.IdVenta = (Int32)Save();
+                    foreach (var detalleventa in this.DetalleVenta)
+                    {
+                        detalleventa.IdVenta = venta.IdVenta;
+                        detalleventa.IdDetalleVenta = (Int32)Save();
+                    }
+                }
+                //foreach (var detalle in this.DetalleVenta)
+                //{
+                //    detalle.Update("IdDetalleVenta");
+                //    detalle.IdDetalleVenta = (Int32)this.Save();
+                //}
+            }
+            return true;
+        }
+    }
+
+    //public class DetalleDevolucionVenta : EntityClass
+    //{
+    //    public int? IdDetalleDevolucionVenta { get; set; }
+    //    public int? IdDevolucionVenta { get; set; }
+    //    public int? IdArticuloExistencia { get; set; }
+    //    public int? IdArticulo { get; set; }
+    //    public Decimal? Cantidad { get; set; }
+    //    public Decimal? Total { get; set; }
+    //    public List<Existencias> Existencias { get; set; }
+    //    public Object SaveDetallesDevolucion()
+    //    {
+    //        if (this.Existencias != null)
+    //        {
+    //            foreach (var exist in this.Existencias)
+    //            {
+    //                exist.IdArticuloExistencia = exist.IdArticuloExistencia;
+    //                exist.Stock = (int?)(exist.Stock + this.Cantidad);
+    //                exist.Update("IdArticuloExistencia");
+    //            }
+
+    //        }
+    //        return true;
+    //    }
+    //}
 
 }

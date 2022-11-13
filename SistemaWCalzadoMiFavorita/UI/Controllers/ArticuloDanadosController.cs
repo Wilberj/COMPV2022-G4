@@ -18,22 +18,24 @@ namespace UI.Controllers
             AuthNetCore.loginIN("sa", "123");
         }
         [HttpPost]
-        public Object ArticuloDanados(ViewNArticulo ent)
+        public Object ArticuloDanados(ViewArticulosDanados ent)
         {
-
-            return ent.Get<ViewNArticulo>();
+            ent.IdUsuario = AuthNetCore.User.UserId;
+            return ent.Get<ViewArticulosDanados>();
         }
-        public Object ChargeArticuloDanados(ViewArticuloDanados ent)
+        public Object ChargeExistencias(Existencias ent)
         {
 
-            return ent.Get<ViewArticuloDanados>();
+            return ent.Get<Existencias>();
+        }
+        public Object ChargeArticulosDanados(ViewArticulosSeleccionarDanados ent)
+        {
+
+            return ent.Get<ViewArticulosSeleccionarDanados>();
         }
         public Object SaveArticuloDanado(ArticuloDanados ent)
         {
-
             return ent.SaveArticuloDanado();
         }
-
-        //CambiosControllerprueba
     }
 }

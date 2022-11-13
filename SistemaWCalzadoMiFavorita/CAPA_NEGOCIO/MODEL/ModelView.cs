@@ -49,6 +49,7 @@ namespace CAPA_NEGOCIO.MODEL
         public string NombreArticulo { get; set; }
         public string Nombreproveedor { get; set; }
         public string NombreUsuario { get; set; }
+        public bool? Estado { get; set; }
     }
     public class ViewDevolucionesDetalleCompra : EntityClass
     {
@@ -61,14 +62,6 @@ namespace CAPA_NEGOCIO.MODEL
         public Decimal? TotalCosto { get; set; }
         public Decimal? TotalCostoDetalle { get; set; }
         public int? IdCompra { get; set; }
-    }
-    public class ViewArticuloDanados : EntityClass
-    {
-        public int? IdArticulo { get; set; }
-        public int? IdArticuloExistencia { get; set; }
-        public string NombreArticulo { get; set; }
-        public string DescripcionArticulo { get; set; }
-        public int? Stock { get; set; }
     }
 
     public class ViewCompraDetalle : EntityClass
@@ -85,18 +78,6 @@ namespace CAPA_NEGOCIO.MODEL
         public int? SubTotal { get; set; }
         public int? TotalCosto { get; set; }
     }
-    public class View_Danados : EntityClass
-    {
-        public int? CódigoArticulo { get; set; }
-        public string NombreArticulo { get; set; }
-        public string NombreBodega { get; set; }
-        public string NombreUsuario { get; set; }
-        public int? Cantidad { get; set; }
-        public string Descripcion { get; set; }
-        public int? PrecioUnidadVenta { get; set; }
-        public int? PrecioUnidadCompra { get; set; }
-        public DateTime? Fecha { get; set; }
-    }
     public class ViewExistenciaCat : EntityClass
     {
         public string NombreMarca { get; set; }
@@ -108,15 +89,103 @@ namespace CAPA_NEGOCIO.MODEL
         public string NombreCategoria { get; set; }
     }
 
-    public class ViewNArticulo : EntityClass
+
+
+    public class ViewArticulosSeleccionarDanados : EntityClass
     {
-        public string NombreArticulo { get; set; }
         public string NombreBodega { get; set; }
+        public string NombreArticulo { get; set; }
+        public int? PrecioUnidadVenta { get; set; }
+        public int? PrecioUnidadCompra { get; set; }
+        public int? Stock { get; set; }
+        public int? IdArticuloExistencia { get; set; }
+    }
+
+    public class ViewArticulosDanados : EntityClass
+    {
         public int? Cantidad { get; set; }
         public string Descripcion { get; set; }
+        public int? PrecioUnidadVenta { get; set; }
+        public int? PrecioUnidadCompra { get; set; }
+        public string NombreArticulo { get; set; }
         public string NombreUsuario { get; set; }
-        public string DescripcionArticulo { get; set; }
-        public DateTime? FechaRegistro { get; set; }
+        public int? IdUsuario { get; set; }
+    }
+    public class ViewExistenciasVentas : EntityClass
+    {
+        public int? IdArticuloExistencia { get; set; }
+        public int? Stock { get; set; }
+        public int? PrecioUnidadVenta { get; set; }
+        public int? Talla { get; set; }
+        public string NombreMarca { get; set; }
+        public string NombreColor { get; set; }
+        public string NombreCategoria { get; set; }
+        public string NombreMaterial { get; set; }
+        public string NombreModelo { get; set; }
+    }
+
+    public class VentasRealizadas : EntityClass
+    {
+        public DateTime? FechaFactura { get; set; }
+        public string NombreCliente { get; set; }
+        public Decimal? TotalVenta { get; set; }
+        public Decimal? IVA { get; set; }
+        public Decimal? DescuentoVenta { get; set; }
+        public Decimal? SubTotal { get; set; }
+        public Decimal? SumaRecibida { get; set; }
+        public Decimal? SumaCambio { get; set; }
+        public string NombreUsuario { get; set; }
+        public int? IdUsuario { get; set; }
+    }
+    public class ViewCompraL : EntityClass
+    {
+        public int? IdCompra { get; set; }
+        public int? IdUsuario { get; set; }
+        public int? IdProveedor { get; set; }
+        public string NombreUsuario { get; set; }
+        public string Nombreproveedor { get; set; }
+        public DateTime? Fecha { get; set; }
+        public Decimal? Descuento { get; set; }
+        public Decimal? IVA { get; set; }
+        public Decimal? SubTotal { get; set; }
+        public Decimal? TotalCosto { get; set; }
+        public bool? Estado { get; set; }
+    }
+    public class ViewDetalleCompraDevolucion : EntityClass
+    {
+        public int? IdDetalleCompra { get; set; }
+        public int? IdCompra { get; set; }
+        public int? IdArticulo { get; set; }
+        public string NombreArticulo { get; set; }
+        public Decimal? PrecioCompra { get; set; }
+        public int? Cantidad { get; set; }
+        public Decimal? TotalCostoDetalle { get; set; }
+        public bool? Estado { get; set; }
+    }
+
+    public class ViewVentasDevolucion : EntityClass
+    {
+        public int? IdVenta { get; set; }
+        public int? IdUsuario { get; set; }
+        public DateTime? FechaFactura { get; set; }
+        public string NombreCliente { get; set; }
+        public Decimal? TotalVenta { get; set; }
+        public Decimal? IVA { get; set; }
+        public Decimal? DescuentoVenta { get; set; }
+        public Decimal? SubTotal { get; set; }
+        public Decimal? SumaRecibida { get; set; }
+        public Decimal? SumaCambio { get; set; }
+        public bool? Estado { get; set; }
+    }
+    public class ViewDevolucionCompleta : EntityClass
+    {
+        public int? IdVenta { get; set; }
+        public DateTime? Fecha { get; set; }
+        public int? CódigoArticulo { get; set; }
+        public string NombreArticulo { get; set; }
+        public string Descripcion { get; set; }
+        public Decimal? Cantidad { get; set; }
+        public Decimal? TotalVenta { get; set; }
     }
 
 }
